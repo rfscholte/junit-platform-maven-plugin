@@ -35,7 +35,7 @@ import org.eclipse.aether.resolution.ArtifactResult;
 import org.eclipse.aether.resolution.DependencyRequest;
 
 /** Provides basic utility helpers. */
-abstract class AbstractBaseMojo extends AbstractMojo {
+abstract class AbstractBaseMojo extends AbstractMojo { // I don't like this name and there doesn't seem to be a need for this extra abstraction layer. 
 
   /** Detected versions extracted from the project's dependencies. */
   private Map<String, String> detectedVersions;
@@ -149,6 +149,8 @@ abstract class AbstractBaseMojo extends AbstractMojo {
     }
   }
 
+  // You shouldn't need this. value of requiresDependencyResolution will ensure all required modules are bound to the project.
+  // Just call project.getArtifacts()
   private List<Artifact> resolve(String coordinates) throws Exception {
     var artifact = new DefaultArtifact(coordinates);
     // debug("Resolving artifact %s from %s...", artifact, repositories);

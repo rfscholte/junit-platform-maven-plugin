@@ -37,6 +37,8 @@ import org.apache.maven.shared.utils.logging.MessageUtils;
     requiresDependencyCollection = ResolutionScope.TEST,
     requiresDependencyResolution = ResolutionScope.TEST)
 public class JUnitPlatformMojo extends AbstractBaseMojo {
+    
+  // As boring as it may seem, please add JavaDoc on all parameters. This will improve goal documentation 
 
   @Parameter(defaultValue = "false")
   private boolean dryRun;
@@ -45,14 +47,14 @@ public class JUnitPlatformMojo extends AbstractBaseMojo {
 
   @Parameter private JavaOptions javaOptions = new JavaOptions();
 
-  @Parameter private List<String> overrideJavaOptions;
+  @Parameter private List<String> overrideJavaOptions; // why the override? if this is about inheritence, xpp3 has some magic attributes to control that.
 
-  @Parameter private List<String> overrideLauncherOptions;
+  @Parameter private List<String> overrideLauncherOptions; // why the override?
 
   @Parameter private Map<String, String> parameters = Map.of();
 
   @Parameter(defaultValue = "junit-platform/reports")
-  private String reports;
+  private String reports; // I don't like a String when it represents a File, so I would use a File here. 
 
   @Parameter(defaultValue = "false")
   private boolean skip;
@@ -62,7 +64,7 @@ public class JUnitPlatformMojo extends AbstractBaseMojo {
   @Parameter(defaultValue = "100")
   private long timeout;
 
-  @Parameter private Map<String, String> versions = Map.of();
+  @Parameter private Map<String, String> versions = Map.of(); // Is this intended to be unbound? If you know the 3 values, you could create a Versions POJO with 3 fields
 
   public void execute() throws MojoFailureException {
     Log log = getLog();

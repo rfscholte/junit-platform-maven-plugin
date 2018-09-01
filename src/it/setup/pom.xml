@@ -29,7 +29,7 @@
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.8.0</version>
           <configuration>
-            <release>11</release>
+            <release>11</release> <!-- is 10 good enough? How about adding https://maven.apache.org/enforcer/enforcer-rules/requireJavaVersion.html to the run-its profile? -->
           </configuration>
         </plugin>
       </plugins>
